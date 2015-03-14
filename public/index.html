@@ -1,0 +1,49 @@
+<!doctype html>
+
+<html ng-app="discussionApp">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Discussion Board</title>
+
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+
+	<script src="js/controllers/controllers.js"></script>
+	<script src="js/services/services.js"></script>
+	<script src="js/app.js"></script>
+
+</head>
+<body ng-controller="mainController">
+	<div class="container">
+
+		<div class="jumbotron text-center">
+			<h2>Welcome to your feed <span class="label label-info">{{ posts.length }}</span></h2>
+		</div>
+
+		<div id="post-list" class="row">
+			<div class="col-sm-4 col-sm-offset-4">
+				<div class="checkbox" ng-repeat="post in posts">
+						{{ post.text }}
+				</div>
+			</div>
+		</div>
+
+		<div id="post-form" class="row">
+			<div class="col-sm-8 col-sm-offset-2 text-center">
+				<form>
+					<div class="form-group">
+
+						<input type="text" class="form-control input-lg text-center" placeholder="Add your comment here" ng-model="formData.text">
+					</div>
+
+					<button type="submit" class="btn btn-primary btn-lg" ng-click="createPost()">Add</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
