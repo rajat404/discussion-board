@@ -1,7 +1,9 @@
 var express  = require('express');
 var app      = express(); 								
-var mongoose = require('mongoose'); 					
-var port  	 = process.env.PORT || 3000; 				
+var http = require('http');
+var mongoose = require('mongoose');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;var port  	 = process.env.PORT || 3000; 				
 var database = require('./config/database'); 			
 var morgan   = require('morgan');	//shows every request made in the log
 var bodyParser = require('body-parser');
@@ -19,6 +21,11 @@ app.use(methodOverride('X-HTTP-Method-Override'));
 
 
 require('./app/routes.js')(app);
+
+var Account = require('./app/models/accounts');
+passport.use(new LocalStrategy(Account.authenticate()));
+passport.serializeUser(Account.serializeUser());
+passport.deserializeUser(Account.deserializeUser());
 
 app.listen(port);
 console.log("App listening on port " + port);

@@ -1,29 +1,27 @@
-<!-- <div ng-controller="mainController"> -->
-	<div class="container">
+<div class="container">
 
-		<div class="jumbotron text-center">
-			<h2>Welcome to your feed <span class="label label-info">{{ posts.length }}</span></h2>
-		</div>
+	<div class="jumbotron text-center">
+		<h2>Welcome to your feed <span class="label label-info">{{ posts.length }}</span></h2>
+	</div>
 
-		<div id="post-list" class="row">
-			<div class="col-sm-4 col-sm-offset-4">
-				<div class="checkbox" ng-repeat="post in posts">
-						{{ post.text }}
-				</div>
-			</div>
-		</div>
-
-		<div id="post-form" class="row">
-			<div class="col-sm-8 col-sm-offset-2 text-center">
-				<form>
-					<div class="form-group">
-
-						<input type="text" class="form-control input-lg text-center" placeholder="Add your comment here" ng-model="formData.text">
-					</div>
-
-					<button type="submit" class="btn btn-primary btn-lg" ng-click="createPost()">Add</button>
-				</form>
+	<div id="post-list" class="row">
+		<div class="col-sm-4 col-sm-offset-4">
+			<div class="checkbox" ng-repeat="post in posts">
+					{{ post.text }}
 			</div>
 		</div>
 	</div>
-<!-- </div> -->
+
+	<div id="post-form" class="row">
+		<div class="col-sm-8 col-sm-offset-2 text-center">
+			<form>
+				<div class="form-group">
+
+					<input type="text" class="form-control input-lg text-center" placeholder="Add your comment here" ng-model="formData.text">
+				</div>
+
+				<button type="submit" class="btn btn-primary btn-lg" ng-click="createPost()">Add</button>
+			</form>
+		</div>
+	</div>
+</div>

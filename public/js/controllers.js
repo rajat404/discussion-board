@@ -6,7 +6,7 @@ angular.module('postController', [])
 		
 		Posts.get().success(function(data) {
 			$scope.posts = data;
-			console.log("$scope.posts",$scope.posts);
+			// console.log("$scope.posts",$scope.posts);
 			$scope.loading = false;
 			});
 		
@@ -19,6 +19,14 @@ angular.module('postController', [])
 					$scope.posts = data; 
 					});
 			}
+		};
+
+	}])
+
+	.controller('signinController', ['$scope','$http','Posts', function($scope, $http, Posts) {
+	
+		$scope.showAlert = function(){
+			alert('You have been successfully registered.');
 		};
 
 	}]);
