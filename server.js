@@ -1,11 +1,12 @@
-var express  = require('express');
-var app      = express(); 								
+var express = require('express');
+var app = express(); 								
 var http = require('http');
 var mongoose = require('mongoose');
 var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;var port  	 = process.env.PORT || 3000; 				
+var LocalStrategy = require('passport-local').Strategy;
+var port = process.env.PORT || 3000; 				
 var database = require('./config/database'); 			
-var morgan   = require('morgan');	//shows every request made in the log
+var morgan = require('morgan');	//shows every request made in the log
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 
@@ -22,10 +23,24 @@ app.use(methodOverride('X-HTTP-Method-Override'));
 
 require('./app/routes.js')(app);
 
-var Account = require('./app/models/accounts');
-passport.use(new LocalStrategy(Account.authenticate()));
-passport.serializeUser(Account.serializeUser());
-passport.deserializeUser(Account.deserializeUser());
+// var Account = require('./app/models/accounts');
+// passport.use(new LocalStrategy(Account.authenticate()));
+// passport.serializeUser(Account.serializeUser());
+// passport.deserializeUser(Account.deserializeUser());
+
+
+
+var userController = require('./app/user.js');
+var authController = require('./app/auth.js');
+
+app.use(passport.initialize());
+
+var router = express.Router();
+router.route('/users')
+	.post(userController.postUsers)
+	.get(authController.isAuthenticated, userController.getUsers);
+
+app.use('/api', router);
 
 app.listen(port);
 console.log("App listening on port " + port);
