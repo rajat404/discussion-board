@@ -1,5 +1,17 @@
 var Comment = require('./models/posts');
 
+
+function temp(res){
+	Comment.find(function(err, posts) {
+
+			if (err)
+				res.send(err)
+
+			res.json(posts); 
+		});
+};
+
+
 exports.getPosts = function(req, res){
 	Comment.find(function(err, posts) {
 			if (err){
@@ -21,7 +33,7 @@ exports.addPosts = function(req, res){
 				res.send(err);
 			}
 		
-			exports.getPosts(res);
+			temp(res);
 		});
 	};
 
