@@ -1,4 +1,5 @@
 var Comment = require('./models/posts');
+var Account = require('./models/accounts');
 
 function getPosts(res){
 	Comment.find(function(err, posts) {
