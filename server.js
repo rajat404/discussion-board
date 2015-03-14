@@ -21,7 +21,7 @@ app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 app.use(methodOverride('X-HTTP-Method-Override')); 
 
 
-require('./app/routes.js')(app);
+// require('./app/routes.js')(app);
 
 // var Account = require('./app/models/accounts');
 // passport.use(new LocalStrategy(Account.authenticate()));
@@ -32,6 +32,7 @@ require('./app/routes.js')(app);
 
 var userController = require('./app/user.js');
 var authController = require('./app/auth.js');
+var postController = require('./app/routes.js');
 
 app.use(passport.initialize());
 
@@ -39,6 +40,10 @@ var router = express.Router();
 router.route('/users')
 	.post(userController.postUsers)
 	.get(authController.isAuthenticated, userController.getUsers);
+
+router.route('/posts')
+	.post(postController.addPosts)
+	.get(postController.getPosts);
 
 app.use('/api', router);
 
