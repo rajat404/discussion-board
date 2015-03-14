@@ -11,12 +11,12 @@
 
 
 
-angular.module('discussionApp',['ngRoute', 'postController', 'postService']).
+angular.module('discussionApp',['ngRoute', 'mainController', 'mainService']).
 config(['$routeProvider', '$locationProvider', function($routeProvider) {
           $routeProvider.
-                when("/", {templateUrl: "views/feed.html", controller: "mainController"}).
+                when("/", {templateUrl: "views/feed.html", controller: "postController"}).
                 when("/signin", {templateUrl: "views/signin.html", controller: "signinController"}).
-                when("/feed", {templateUrl: "views/feed.html", controller: "mainController"}).
+                when("/feed", {templateUrl: "views/feed.html", controller: "postController"}).
                 otherwise({redirectTo: '/'
             });
 }]);
