@@ -3,11 +3,12 @@
 	<div class="jumbotron text-center">
 		<h2>Welcome to your feed <span class="label label-info">{{ posts.length }}</span></h2>
 	</div>
-
 	<div id="post-list" class="row">
-		<div class="col-sm-4 col-sm-offset-4">
-			<div class="checkbox" ng-repeat="post in posts">
-					{{ post.text }}			Posted by: {{post.username}}
+		<div class="col-sm-10 col-sm-offset-1">
+			<div class="list-group" ng-repeat="post in posts">
+				<li class="list-group-item">{{ post.text }}
+					<span class="badge">by {{post.username}}</span>
+				</li>
 			</div>
 		</div>
 	</div>
@@ -16,12 +17,11 @@
 		<div class="col-sm-8 col-sm-offset-2 text-center">
 			<form>
 				<div class="form-group">
-
 					<input type="text" class="form-control input-lg text-center" placeholder="Add your comment here" ng-model="formData.text">
 				</div>
-
 				<button type="submit" class="btn btn-primary btn-lg" ng-click="createPost()">Add</button>
 			</form>
 		</div>
 	</div>
+	
 </div>
