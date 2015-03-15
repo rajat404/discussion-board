@@ -29,4 +29,4 @@ passport.use(new LocalStrategy(
 
 
 
-exports.isAuthenticated = passport.authenticate('local', { session : true });
+exports.isAuthenticated = passport.authenticate('local', { session : false });

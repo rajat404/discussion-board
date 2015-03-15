@@ -1,19 +1,19 @@
 angular.module('mainController', [])
 	
-	.controller('postController', ['$scope','$http','postService', function($scope, $http, postService) {
+	.controller('postController', ['$scope','$http','postService','$rootScope', function($scope, $http, postService) {
 		$scope.formData = {};
 
 
-    $rootScope.$on('$routeChangeStart', function (event, next) {
-        var userAuthenticated = false; // Check if the user is logged in 
+    // $rootScope.$on('$routeChangeStart', function (event, next) {
+    //     var userAuthenticated = false; // Check if the user is logged in 
 
-        if (!userAuthenticated && !next.isLogin) {
-            // You can save the user's location to take him back to the same page after he has logged-in
-            $rootScope.savedLocation = $location.url();
+    //     if (!userAuthenticated && !next.isLogin) {
+    //         // You can save the user's location to take him back to the same page after he has logged-in
+    //         // $rootScope.savedLocation = $location.url();
 
-            $location.path('/signin');
-        }
-    });
+    //         $location.path('/signin');
+    //     }
+    // });
 
 		
 		postService.get().success(function(data) {
@@ -47,7 +47,7 @@ angular.module('mainController', [])
 				console.log("$scope.data");
 				console.log($scope.data);
 				});
-			// alert('You have been successfully registered.');
+			alert('You have been successfully registered.');
 		};
 
 		$scope.checkUser = function($location) {
