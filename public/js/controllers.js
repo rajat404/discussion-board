@@ -26,18 +26,14 @@ angular.module('mainController', [])
 
 		$scope.createUser = function(){
 			var data = $.param({'username':$scope.email2,'password':$scope.password2});
-			console.log(data);
 			userService.create(data).success(function(data) {
 				$scope.data = data; 
-				console.log("$scope.data");
-				console.log($scope.data);
 				});
 			alert('You have been successfully registered. Please log in to views your feed.');
 		};
 
 		$scope.logoutUser = function(){
 			var data = null;
-			console.log(data);
 			$scope.data = null; 
 			$rootScope.authorized = false;
 			$rootScope.user = null;
@@ -47,22 +43,17 @@ angular.module('mainController', [])
 		$scope.checkUser = function($location) {
 		$rootScope.user = null;
 
-			userService.get($scope.email,$scope.password)
-				.success(function(data) {
-					
-					console.log("$scope.email");
-					console.log($scope.email);
-					
-					
-					$rootScope.authorized = true;
-					$rootScope.user = $scope.email;
-					$scope.email = null;
-					$scope.password = null;
-					location.href="#/feed";
-					})
-				.error(function(data){
-            		alert('Please enter the correct username & password.');
-       				 });
+		userService.get($scope.email,$scope.password)
+			.success(function(data) {
+				$rootScope.authorized = true;
+				$rootScope.user = $scope.email;
+				$scope.email = null;
+				$scope.password = null;
+				location.href="#/feed";
+				})
+			.error(function(data){
+        		alert('Please enter the correct username & password.');
+   				 });
 
 		};
 

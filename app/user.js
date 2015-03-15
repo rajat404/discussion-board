@@ -1,5 +1,6 @@
 var Account = require('./models/accounts');
 
+//POST endpoint for /api/users
 exports.postUsers = function(req, res) {
   var user = new Account({
     username: req.body.username,
@@ -14,7 +15,7 @@ exports.postUsers = function(req, res) {
   });
 };
 
-// Create endpoint /api/users for GET
+//GET endpoint for /api/users
 exports.getUsers = function(req, res) {
   Account.findOne(function(err, users) {
     if (err)

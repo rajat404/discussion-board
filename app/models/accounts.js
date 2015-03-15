@@ -1,19 +1,6 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
-// var ObjectId = Schema.ObjectId;
-// var passportLocalMongoose = require('passport-local-mongoose');
 var bcrypt = require('bcrypt-nodejs');
-
-
-// var Account = new Schema({
-//     email: String,
-//     password: String
-// });
-
-// Account.plugin(passportLocalMongoose, {
-//   usernameField: 'email',
-//   usernameUnique: true
-// });
 
 var Account = new mongoose.Schema({
   username: {
