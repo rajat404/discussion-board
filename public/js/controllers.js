@@ -32,9 +32,10 @@ angular.module('mainController', [])
 
 	}])
 
-	.controller('signinController', ['$scope','$http','userService','$location', function($scope, $http, userService, $location) {
+	.controller('signinController', ['$scope','$http','userService','$location','$rootScope', function($scope, $http, userService, $location, $rootScope) {
 	
-		$scope.authorized = false;
+		// $scope.authorized = false;
+		$rootScope.authorized = false;
 
 
 
@@ -59,7 +60,7 @@ angular.module('mainController', [])
 					console.log($scope.data);
 					// $location = '/feed';
 					// $location.path("/feed");
-					$scope.authorized = 1;
+					$rootScope.authorized = true;
 					location.href="#/feed";
 					})
 				.error(function(data){
