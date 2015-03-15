@@ -6,7 +6,7 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var port = process.env.PORT || 3000; 				
 var database = require('./config/database'); 			
-var morgan = require('morgan');	//shows every request made in the log
+var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 
@@ -20,52 +20,17 @@ app.use(bodyParser.json());
 app.use(bodyParser.json({ type: 'application/vnd.api+json' })); 
 app.use(methodOverride('X-HTTP-Method-Override')); 
 
-
-// require('./app/routes.js')(app);
-
-// var Account = require('./app/models/accounts');
-// passport.use(new LocalStrategy(Account.authenticate()));
-// passport.serializeUser(Account.serializeUser());
-// passport.deserializeUser(Account.deserializeUser());
-
-// passport.serializeUser(function(user, done) {
-// done(null, user._id);
-// });
-// passport.deserializeUser(function(_id, done) {
-// User.findById(_id, function (err, user) {
-// done(err, user);
-// });
-// })
-
-
 var userController = require('./app/user.js');
 var authController = require('./app/auth.js');
 var postController = require('./app/routes.js');
 
 app.use(passport.initialize());
 
-
-
-// require('./app/auth.js')(app);
-
-
-// app.post('/login',
-//   passport.authenticate('local'),
-//   function(req, res) {
-//     // If this function gets called, authentication was successful.
-//     // `req.user` contains the authenticated user.
-//     // res.redirect('/users/' + req.user.username);
-//     res.json(req.user);
-//   });
-
 var router = express.Router();
 router.route('/users')
 	.post(userController.postUsers)
 	.get(authController.isAuthenticated, userController.getUsers);
 
-// router.route('/posts')
-// 	.post(authController.isAuthenticated, postController.addPosts)
-// 	.get(authController.isAuthenticated, postController.getPosts);
 router.route('/posts')
 	.post(postController.addPosts)
 	.get(postController.getPosts);

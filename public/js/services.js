@@ -13,11 +13,9 @@ angular.module('mainService', [])
 	.factory('userService', ['$http',function($http) {
 	return {
 		get : function(username, password) {
-			//http://localhost:3000/api/beers?username=denver&password=rocks
 			return $http.get('/api/users?username='+username+'&password='+password);
 		},
 		create : function(data) {
-			// return $http.post('/api/users', postData);
 	        return $http({
 		        headers :{'Content-Type':'application/x-www-form-urlencoded'},
 		        method: 'POST',
