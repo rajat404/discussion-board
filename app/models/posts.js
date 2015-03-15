@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var posts = new Schema({
 	text : {type : String, default: ''},
-	// userId: String
+	username : String
 });
 
 module.exports = mongoose.model('posts', posts);

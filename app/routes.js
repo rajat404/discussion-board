@@ -26,7 +26,7 @@ exports.getPosts = function(req, res){
 exports.addPosts = function(req, res){
 	Comment.create({
 		text : req.body.text,
-		// userId = req.user._id,
+		username : req.body.username,
 		done : false
 		}, function(err, posts) {
 			if (err){
