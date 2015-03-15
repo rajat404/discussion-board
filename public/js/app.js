@@ -14,7 +14,7 @@
 angular.module('discussionApp',['ngRoute', 'mainController', 'mainService']).
 config(['$routeProvider', '$locationProvider', function($routeProvider) {
           $routeProvider.
-                when("/", {templateUrl: "views/feed.html", controller: "postController"}).
+                when("/", {templateUrl: "views/signin.html", controller: "signinController"}).
                 when("/signin", {templateUrl: "views/signin.html", controller: "signinController"}).
                 when("/feed", {templateUrl: "views/feed.html", controller: "postController"}).
                 otherwise({redirectTo: '/'

@@ -1,15 +1,15 @@
 <div class="container">
     <div class="row">
         <div class="col-md-5">
-        	<form class="form-signin" action="/login" method="post">
+        	<!-- <form class="form-signin" action="/login" method="post"> -->
 		    	<h2 class="form-signin-heading text-center">Sign In</h2>
 		    
-		        <input type="text" name="email" id="email" class="form-control" placeholder="E-mail" required autofocus>
+		        <input type="text" name="email" ng-model="email" class="form-control" placeholder="E-mail" required autofocus>
 		        
-		        <input type="password" name="password" id="password" class="form-control" placeholder="Password">
+		        <input type="password" name="password" ng-model="password" class="form-control" placeholder="Password" required>
 		        
-		        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign In</button>
-		  	</form>
+		        <button class="btn btn-lg btn-primary btn-block" ng-click="checkUser()">Sign In</button>
+		  	<!-- </form> -->
         </div>
 
 	    <div class="col-md-2">
@@ -17,17 +17,17 @@
 		</div>
 
         <div class="col-md-5">
-        	<form class="form-signin" action="/register" method="post">
+        	<!-- <form class="form-signin" action="/register" method="post"> -->
 		    	<h2 class="form-signin-heading text-center">Sign Up</h2>
 		    
 		        <label for="email" class="sr-only">E-mail</label>
-		        <input type="email" id="email" name="email" class="form-control" placeholder="E-mail" required>
+		        <input type="email" name="email" ng-model="email2" class="form-control" placeholder="E-mail" required>
 		        
 		        <label for="password" class="sr-only">Password</label>
-		        <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
+		        <input type="password" name="password" ng-model="password2" class="form-control" placeholder="Password" required>
 		        
-		        <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="showAlert()">Sign Up</button>
-	  		</form>
+		        <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="createUser()">Sign Up</button>
+	  		<!-- </form> -->
         </div>
     </div>
 </div>

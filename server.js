@@ -28,6 +28,14 @@ app.use(methodOverride('X-HTTP-Method-Override'));
 // passport.serializeUser(Account.serializeUser());
 // passport.deserializeUser(Account.deserializeUser());
 
+// passport.serializeUser(function(user, done) {
+// done(null, user._id);
+// });
+// passport.deserializeUser(function(_id, done) {
+// User.findById(_id, function (err, user) {
+// done(err, user);
+// });
+// })
 
 
 var userController = require('./app/user.js');
@@ -36,14 +44,28 @@ var postController = require('./app/routes.js');
 
 app.use(passport.initialize());
 
+
+
+// require('./app/auth.js')(app);
+
+
+// app.post('/login',
+//   passport.authenticate('local'),
+//   function(req, res) {
+//     // If this function gets called, authentication was successful.
+//     // `req.user` contains the authenticated user.
+//     // res.redirect('/users/' + req.user.username);
+//     res.json(req.user);
+//   });
+
 var router = express.Router();
 router.route('/users')
 	.post(userController.postUsers)
-	.get(authController.isAuthenticated, userController.getUsers);
+	.get(userController.getUsers);
 
 router.route('/posts')
-	.post(postController.addPosts)
-	.get(postController.getPosts);
+	.post(authController.isAuthenticated, postController.addPosts)
+	.get(authController.isAuthenticated, postController.getPosts);
 
 app.use('/api', router);
 

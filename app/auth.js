@@ -19,10 +19,14 @@ passport.use(new LocalStrategy(
 			if (!isMatch) { return callback(null, false); }
 
 			// Success
+			// passport.serializeUser(Account.serializeUser());
+			// passport.deserializeUser(Account.deserializeUser());
 			return callback(null, user);
 			});
 		});
 	}
 ));
 
-exports.isAuthenticated = passport.authenticate('local', { session : false });
+
+
+exports.isAuthenticated = passport.authenticate('local', { session : true });

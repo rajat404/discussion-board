@@ -19,10 +19,26 @@ angular.module('mainController', [])
 
 	}])
 
-	.controller('signinController', ['$scope','$http','postService', function($scope, $http, postService) {
+	.controller('signinController', ['$scope','$http','userService', function($scope, $http, userService) {
 	
-		$scope.showAlert = function(){
-			alert('You have been successfully registered.');
+		$scope.createUser = function(){
+			var data = $.param({'username':$scope.email2,'password':$scope.password2});
+			console.log(data);
+			userService.create(data).success(function(data) {
+				$scope.data = data; 
+				console.log("$scope.data");
+				console.log($scope.data);
+				});
+			// alert('You have been successfully registered.');
+		};
+
+		$scope.checkUser = function() {
+
+			userService.get($scope.email,$scope.password).success(function(data) {
+				$scope.data = data; 
+				console.log("$scope.data");
+				console.log($scope.data);
+				});
 		};
 
 	}]);
