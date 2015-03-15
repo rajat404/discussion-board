@@ -5,30 +5,24 @@ angular.module('mainController', [])
 
 		postService.get().success(function(data) {
 			$scope.posts = data;
-			// console.log("$scope.posts",$scope.posts);
 			});
 		
 		$scope.createPost = function() {
 			if ($scope.formData.text != undefined) {
 				$scope.formData.username = $rootScope.user;
-				$rootScope.user = null;
+				
 				postService.create($scope.formData).success(function(data) {
 					$scope.formData = {}; 
 					$scope.posts = data; 
-					});
+				});
 			}
 		};
-
 	}])
 
 	.controller('signinController', ['$scope','$http','userService','$location','$rootScope', function($scope, $http, userService, $location, $rootScope) {
 	
-		// $scope.authorized = false;
 		$rootScope.authorized = false;
 		$rootScope.user = null;
-
-
-
 
 		$scope.createUser = function(){
 			var data = $.param({'username':$scope.email2,'password':$scope.password2});
@@ -38,7 +32,7 @@ angular.module('mainController', [])
 				console.log("$scope.data");
 				console.log($scope.data);
 				});
-			alert('You have been successfully registered.');
+			alert('You have been successfully registered. Please log in to views your feed.');
 		};
 
 		$scope.logoutUser = function(){
@@ -55,13 +49,13 @@ angular.module('mainController', [])
 
 			userService.get($scope.email,$scope.password)
 				.success(function(data) {
-					$scope.data = data; 
-					console.log("$scope.data.username");
-					console.log($scope.data.username);
-					// $location = '/feed';
-					// $location.path("/feed");
+					
+					console.log("$scope.email");
+					console.log($scope.email);
+					
+					
 					$rootScope.authorized = true;
-					$rootScope.user = $scope.data.username;
+					$rootScope.user = $scope.email;
 					$scope.email = null;
 					$scope.password = null;
 					location.href="#/feed";
