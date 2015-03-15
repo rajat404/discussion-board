@@ -11,6 +11,7 @@ angular.module('mainController', [])
 		$scope.createPost = function() {
 			if ($scope.formData.text != undefined) {
 				$scope.formData.username = $rootScope.user;
+				$rootScope.user = null;
 				postService.create($scope.formData).success(function(data) {
 					$scope.formData = {}; 
 					$scope.posts = data; 
@@ -40,7 +41,17 @@ angular.module('mainController', [])
 			alert('You have been successfully registered.');
 		};
 
+		$scope.logoutUser = function(){
+			var data = null;
+			console.log(data);
+			$scope.data = null; 
+			$rootScope.authorized = false;
+			$rootScope.user = null;
+			alert('You have been successfully logged out.');
+		};
+
 		$scope.checkUser = function($location) {
+		$rootScope.user = null;
 
 			userService.get($scope.email,$scope.password)
 				.success(function(data) {
@@ -51,6 +62,8 @@ angular.module('mainController', [])
 					// $location.path("/feed");
 					$rootScope.authorized = true;
 					$rootScope.user = $scope.data.username;
+					$scope.email = null;
+					$scope.password = null;
 					location.href="#/feed";
 					})
 				.error(function(data){
