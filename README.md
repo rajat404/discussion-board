@@ -2,15 +2,15 @@
 
 This is an app built on the MEAN Stack.
 
-The final code resides in the `dev` branch. Please use that code.
-
 It allows the users to add their comments to the feed, after logging in.
 Local authentication has been implemented with passport-local.
+
+(The final code resides in the `dev` branch. Please use that code.)
 
 ## Installation
 
 1. Clone the repository: `git@github.com:rajat404/discussion-board.git`
-2. Install the application: `npm install`
+2. Install the dependencies: `npm install`
 3. Start the server: `node server.js`
 4. View in browser at `http://localhost:3000`
 
