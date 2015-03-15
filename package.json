@@ -1,9 +1,9 @@
 {
-  "name": "node-todo",
+  "name": "discussion-board",
   "version": "0.0.0",
-  "description": "Simple todo application.",
+  "description": "A discussion-board with local auth.",
   "main": "server.js",
-  "author": "Scotch",
+  "author": "rajat",
   "dependencies": {
     "express": "~4.6.1",
     "mongoose": "~3.8.25",
