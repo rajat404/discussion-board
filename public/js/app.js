@@ -17,7 +17,6 @@ config(['$routeProvider', '$locationProvider', function($routeProvider) {
                 when("/", {templateUrl: "views/signin.html", controller: "signinController"}).
                 when("/signin", {templateUrl: "views/signin.html", controller: "signinController"}).
                 when("/feed", {templateUrl: "views/feed.html", controller: "postController"}).
-                otherwise({redirectTo: '/'
-            });
+                otherwise({redirectTo: '/'});
 }]);
 

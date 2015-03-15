@@ -19,7 +19,7 @@ angular.module('mainController', [])
 
 	}])
 
-	.controller('signinController', ['$scope','$http','userService', function($scope, $http, userService) {
+	.controller('signinController', ['$scope','$http','userService','$location', function($scope, $http, userService, $location) {
 	
 		$scope.createUser = function(){
 			var data = $.param({'username':$scope.email2,'password':$scope.password2});
@@ -32,13 +32,21 @@ angular.module('mainController', [])
 			// alert('You have been successfully registered.');
 		};
 
-		$scope.checkUser = function() {
+		$scope.checkUser = function($location) {
 
-			userService.get($scope.email,$scope.password).success(function(data) {
-				$scope.data = data; 
-				console.log("$scope.data");
-				console.log($scope.data);
-				});
+			userService.get($scope.email,$scope.password)
+				.success(function(data) {
+					$scope.data = data; 
+					console.log("$scope.data");
+					console.log($scope.data);
+					// $location = '/feed';
+					// $location.path("/feed");
+					location.href="#/feed";
+					})
+				.error(function(data){
+            		alert('Please enter the correct username & password.');
+       				 });
+
 		};
 
 	}]);

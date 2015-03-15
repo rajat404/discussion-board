@@ -61,11 +61,14 @@ app.use(passport.initialize());
 var router = express.Router();
 router.route('/users')
 	.post(userController.postUsers)
-	.get(userController.getUsers);
+	.get(authController.isAuthenticated, userController.getUsers);
 
+// router.route('/posts')
+// 	.post(authController.isAuthenticated, postController.addPosts)
+// 	.get(authController.isAuthenticated, postController.getPosts);
 router.route('/posts')
-	.post(authController.isAuthenticated, postController.addPosts)
-	.get(authController.isAuthenticated, postController.getPosts);
+	.post(postController.addPosts)
+	.get(postController.getPosts);
 
 app.use('/api', router);
 

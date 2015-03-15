@@ -16,7 +16,7 @@ exports.postUsers = function(req, res) {
 
 // Create endpoint /api/users for GET
 exports.getUsers = function(req, res) {
-  Account.find(function(err, users) {
+  Account.findOne(function(err, users) {
     if (err)
       res.send(err);
 
