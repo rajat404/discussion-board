@@ -19,5 +19,5 @@ Local authentication has been implemented with passport-local.
 Please make sure that you have MongoDB running. To check run `sudo service mongod status`
 The DB name is `discussion` and all posts reside in the collection `posts` , and all the users in `accounts`
 
-![Sign-in](http://imgur.com/Z7Ti6ia)
-![Feed](http://imgur.com/bufGLVO)
+![Sign-in](http://i.imgur.com/Z7Ti6ia.png)
+![Feed](http://i.imgur.com/bufGLVO.png)
